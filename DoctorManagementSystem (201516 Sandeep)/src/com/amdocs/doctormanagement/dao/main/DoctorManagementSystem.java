@@ -54,25 +54,21 @@ public class DoctorManagementSystem {
                     // Update doctor fees
                     System.out.println("Enter doctor ID to update fees:");
                     int idToUpdate = scanner.nextInt();
-                    boolean doctorFound = false;
+                    System.out.println("Enter updated fees:");
+                    double newfees = scanner.nextDouble();
                     
-                    for (Doctor doctor : doctors) {
-                        if (doctor.getId() == idToUpdate) {
-                        	
-                        	  System.out.println("Enter new fees:");
-                              double newFees = scanner.nextDouble();
-                              scanner.nextLine(); // Consume the newline character
-                              dao.updateDoctorFees(idToUpdate, newFees);
-                              System.out.println("Doctor fees updated successfully.");
-                              break;
-                        }
+                    boolean doctorFound = dao.updateDoctorFees(idToUpdate, newfees);
+                    if (doctorFound)
+                    {
+                    	System.out.println("Updated Successfully");
+                    
                     }
 
-                    if (!doctorFound) {
+                    else {
                         System.out.println("No doctor with ID " + idToUpdate + " found.");
-                        break;
+                        
                     }
-                  
+                    break;
 
                 case 3:
                     // Delete doctor
