@@ -30,9 +30,10 @@ public class DoctorDAOImpl implements DoctorDAO{
 			if(doctor.getId()==doctorId)
 			{
 				doctorList.remove(doctor);
+				return 1;
 			}			
 		}
-		return doctorId;
+		return 0 ;
 	}
 
 	@Override
