@@ -75,8 +75,14 @@ public class DoctorManagementSystem {
                     System.out.println("Enter doctor ID to delete:");
                     int idToDelete = scanner.nextInt();
                     scanner.nextLine(); // Consume the newline character
-                    dao.deleteDoctor(idToDelete);
-                    System.out.println("Doctor deleted successfully.");
+                    int doctorDeleted = dao.deleteDoctor(idToDelete);
+                    if (doctorDeleted == 1)
+                    {
+                    	System.out.println("Doctor deleted successfully.");
+                    }
+                    else 
+                    	System.out.println("Doctor Not found");
+                    
                     break;
 
                 case 4:
