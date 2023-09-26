@@ -52,6 +52,7 @@ public class DoctorManagementSystem {
 
                 case 2:
                     // Update doctor fees
+                	try {
                     System.out.println("Enter doctor ID to update fees:");
                     int idToUpdate = scanner.nextInt();
                     System.out.println("Enter updated fees:");
@@ -65,13 +66,18 @@ public class DoctorManagementSystem {
                     }
 
                     else {
-                        System.out.println("No doctor with ID " + idToUpdate + " found.");
+                        throw new DoctorNotFoundException("Doctor not found"); 
                         
                     }
+                	} catch (DoctorNotFoundException e)
+                	{
+                		e.printStackTrace();
+                	}
                     break;
 
                 case 3:
                     // Delete doctor
+                	try {
                     System.out.println("Enter doctor ID to delete:");
                     int idToDelete = scanner.nextInt();
                     scanner.nextLine(); // Consume the newline character
@@ -80,9 +86,13 @@ public class DoctorManagementSystem {
                     {
                     	System.out.println("Doctor deleted successfully.");
                     }
-                    else 
-                    	System.out.println("Doctor Not found");
-                    
+                    else
+                    	throw new DoctorNotFoundException("Doctor not found");
+                	}
+                	catch (DoctorNotFoundException e)
+                	{
+                		e.printStackTrace();
+                	}
                     break;
 
                 case 4:
